@@ -11,6 +11,9 @@ trait StockTrait {
 
 	public function getAvailabilityAttribute()
 	{
+		if ( !config('sanatorium-stock.enabled') )
+			return null;
+		
 		return $this->getAvailability('default')->alias;
 	}
 
@@ -21,6 +24,9 @@ trait StockTrait {
 
 	public function getAvailability($usage = 'default')
 	{
+		if ( !config('sanatorium-stock.enabled') )
+			return null;
+
 		$stock = $this->stock;
 		
 		$alias = Alias::where('min', '<=', $stock)

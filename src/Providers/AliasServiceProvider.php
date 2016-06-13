@@ -24,6 +24,8 @@ class AliasServiceProvider extends ServiceProvider {
 		$this->app['sanatorium.stock.usages']->registerService(
 			'default', $this->app['Sanatorium\Stock\Usages\DefaultUsage']
 		);
+
+		$this->prepareResources();
 	}
 
 	/**
@@ -42,6 +44,22 @@ class AliasServiceProvider extends ServiceProvider {
 
 		// Register the validator
 		$this->bindIf('sanatorium.stock.alias.validator', 'Sanatorium\Stock\Validator\Alias\AliasValidator');
+	}
+
+	/**
+	 * Prepare the package resources.
+	 *
+	 * @return void
+	 */
+	protected function prepareResources()
+	{
+		$config = realpath(__DIR__.'/../../config/config.php');
+
+		$this->mergeConfigFrom($config, 'sanatorium-stock');
+
+		$this->publishes([
+			$config => config_path('sanatorium-stock.php'),
+		], 'config');
 	}
 
 }
