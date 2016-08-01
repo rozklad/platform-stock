@@ -67,7 +67,7 @@ return [
 	|
 	*/
 
-	'version' => '0.1.3',
+	'version' => '0.1.4',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -146,6 +146,19 @@ return [
 
 	'routes' => function(ExtensionInterface $extension, Application $app)
 	{
+
+        Route::group([
+            'prefix'    => admin_uri().'/stock',
+            'namespace' => 'Sanatorium\Stock\Controllers\Admin',
+        ], function()
+        {
+
+            Route::get('/' , ['as' => 'admin.sanatorium.stock.index', 'uses' => 'StockController@index']);
+
+            Route::get('action/{type}' , ['as' => 'admin.sanatorium.stock.action', 'uses' => 'StockController@action']);
+
+        });
+
 		Route::group([
 				'prefix'    => admin_uri().'/stock/aliases',
 				'namespace' => 'Sanatorium\Stock\Controllers\Admin',

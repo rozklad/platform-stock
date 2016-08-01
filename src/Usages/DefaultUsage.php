@@ -11,8 +11,8 @@ class DefaultUsage {
 
 	public function __construct()
 	{
-		$this->name 		= trans('sanatorium/'.$this->extension.'::usage/default.name');
-		$this->description 	= trans('sanatorium/'.$this->extension.'::usage/default.description');
+		$this->name 		= trans('sanatorium/'.$this->extension.'::usage/'.$this->slug.'.name');
+		$this->description 	= trans('sanatorium/'.$this->extension.'::usage/'.$this->slug.'.description');
 	}
 
 }

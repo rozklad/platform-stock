@@ -88,7 +88,7 @@ class AliasesController extends AdminController {
 		{
 			$element->edit_uri = route('admin.sanatorium.stock.aliases.edit', $element->id);
 
-			$element->usage_name = $usages[$element->usage]->name;
+			$element->usage_name = (new $usages[$element->usage])->name;
 
 			return $element;
 		};

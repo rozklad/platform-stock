@@ -31,7 +31,8 @@
 				'{{ $alias->usage ? $alias->usage : 'default' }}'
 			],
 			options: [
-				@foreach( $usages as $usage )
+				@foreach( $usages as $usage_class )
+					<?php $usage = new $usage_class; ?>
 					{ name: '{{ $usage->name }}', slug: '{{ $usage->slug }}', description: '{{ $usage->description }}' },
 				@endforeach
 			],

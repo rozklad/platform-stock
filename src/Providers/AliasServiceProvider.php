@@ -22,7 +22,7 @@ class AliasServiceProvider extends ServiceProvider {
 
         // Register the default usage
 		$this->app['sanatorium.stock.usages']->registerService(
-			'default', $this->app['Sanatorium\Stock\Usages\DefaultUsage']
+			'default', 'Sanatorium\Stock\Usages\DefaultUsage'
 		);
 
 		$this->prepareResources();
